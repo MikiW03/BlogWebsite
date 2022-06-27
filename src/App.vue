@@ -1,21 +1,17 @@
 <template>
   <h1>Blog</h1>
-  <div id="posts">
+  <div id="posts" v-if="postsExist">
     <PostItem v-for="post in posts" :key="post.id" :title="post.title" :body="post.body" :tags="post.tags"
       :reactions="post.reactions">
     </PostItem>
   </div>
+  <p class="error" v-else>Sorry. No posts to display (Possible network error)</p>
 </template>
 
 <script>
 import PostItem from './components/PostItem.vue'
 
 export default {
-  data() {
-    return {
-      posts: {},
-    }
-  },
   components: {
     PostItem
   },
@@ -25,6 +21,19 @@ export default {
       .then(data => {
         ({ posts: this.posts } = data)
       })
+      .catch(error => {
+        console.log(error)
+      })
+  },
+  data() {
+    return {
+      posts: {},
+    }
+  },
+  computed: {
+    postsExist() {
+      return this.posts.length > 0
+    }
   }
 }
 
@@ -56,5 +65,9 @@ body {
   width: clamp(40vw, 500px, 90vw);
   margin-inline: auto;
   margin-block: 0;
+}
+
+.error {
+  color: red;
 }
 </style>
