@@ -1,4 +1,6 @@
-# blog-website
+#Blog Website
+Simple blog-like website taking some fake posts from API (https://dummyjson.com/) and displaying them with Vue
+
 
 ## Project setup
 ```
