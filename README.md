@@ -1,5 +1,5 @@
 ## Blog Website </br>
-Simple blog-like website taking some fake posts from API (https://dummyjson.com/) and displaying them with Vue
+Simple blog-like website taking some fake posts from API (https://dummyjson.com/) and displaying it with Vue
 
 
 ## Project setup
