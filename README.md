@@ -1,4 +1,4 @@
-#Blog Website
+## Blog Website </br>
 Simple blog-like website taking some fake posts from API (https://dummyjson.com/) and displaying them with Vue
 
 
