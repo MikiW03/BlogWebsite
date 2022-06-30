@@ -1,11 +1,9 @@
 <template>
   <h1>Blog</h1>
-  <div id="posts" v-if="postsExist">
-    <PostItem v-for="post in posts" :key="post.id" :title="post.title" :body="post.body" :tags="post.tags"
-      :reactions="post.reactions">
-    </PostItem>
+  <div id="posts" v-if="!error">
+    <PostItem v-for="post in posts" :key="post.id" v-bind="post" />
   </div>
-  <p class="error" v-else>Sorry. No posts to display (Possible network error)</p>
+  <p class="error" v-else>Sorry. No posts to display. <br> {{ error }} </p>
 </template>
 
 <script>
@@ -22,17 +20,13 @@ export default {
         ({ posts: this.posts } = data)
       })
       .catch(error => {
-        console.log(error)
+        this.error = error
       })
   },
   data() {
     return {
       posts: {},
-    }
-  },
-  computed: {
-    postsExist() {
-      return this.posts.length > 0
+      error: ""
     }
   }
 }
